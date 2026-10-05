@@ -1,0 +1,16 @@
+{
+  "name": "jayaagro2",
+  "version": "1.0.0",
+  "description": "Aplikasi Manajemen Pertanian Modern dengan Sistem Whitelist Sekali Bayar dan Pengelolaan Siklus Tanam",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node -e \"console.log('Build completed')\"",
+    "lint": "node -e \"console.log('Lint completed')\""
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

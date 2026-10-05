@@ -1,0 +1,15 @@
+JAYA AGROFARM NUSANTARA - NETLIFY DEPLOY (FINAL)
+
+1. Jalankan SUPABASE_ISOLASI_AKUN.sql di Supabase SQL Editor SEKALI.
+2. Jalankan SUPABASE_SMART_FARM.sql bila modul Smart Farm digunakan.
+3. Netlify -> Add new site -> Deploy manually -> upload folder hasil ZIP ini.
+4. Publish directory: . (root folder)
+5. Build command: kosong.
+6. Supabase URL dan publishable key sudah memiliki nilai default di js/supabase.js.
+   Environment variable VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY boleh disiapkan untuk build tooling, tetapi aplikasi static ini tidak membutuhkan /api/config.js.
+7. Mode produksi STRICT_SUPABASE aktif: data bisnis dan login WAJIB melalui Supabase.
+   localStorage tidak lagi menjadi database pengganti saat Supabase gagal.
+8. Setelah deploy, tes login dan CRUD dari dua akun berbeda untuk memastikan RLS/tenant isolation.
+
+
+PEMBARUAN 2026-10-05: setelah deploy, buka URL Netlify sekali dengan reload penuh. Service Worker v2.0.0 memakai network-first untuk HTML/JS/CSS sehingga versi baru tidak tertahan cache.

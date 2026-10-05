@@ -1,0 +1,448 @@
+/* Custom Styles & Animation for Jaya Agrofarm Nusantara Management App */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary-green: #10b981;
+    --primary-dark: #047857;
+    --primary-bg: #f0fdf4;
+    --accent-amber: #f59e0b;
+    --accent-blue: #0284c7;
+    --surface-card: #ffffff;
+    --border-color: #e2e8f0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar - Rapih & Minimalis */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Navigasi Tab Aktif */
+.nav-link {
+    transition: all 0.2s ease-in-out;
+}
+.nav-link.active {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+}
+.nav-link.active svg {
+    color: #ffffff !important;
+}
+
+/* Card Hover Transitions & Elevation */
+.stat-card, .farm-card {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+    max-width: 100%;
+    min-width: 0;
+}
+.stat-card:hover, .farm-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Modal Smooth Animations */
+.modal-backdrop {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+    animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 100%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Status Badges */
+.badge-status-active {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+.badge-status-prep {
+    background-color: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+.badge-status-rest {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+.badge-low-stock {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    animation: pulseSlow 2s infinite;
+}
+
+@keyframes pulseSlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.75; }
+}
+
+/* Form Input & Select Polish */
+input, select, textarea {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: #10b981 !important;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Button Micro-Interactions */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Print Stylesheet for Reports */
+@media print {
+    aside, header, #mobile-bottom-nav, .no-print, button, .modal-backdrop {
+        display: none !important;
+    }
+    main {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+    body {
+        background-color: #ffffff !important;
+    }
+    .print-only {
+        display: block !important;
+    }
+}
+
+.print-only {
+    display: none;
+}
+
+/* Multi-Tenant Badges */
+.badge-tenant-enterprise {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.badge-tenant-coop {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.badge-tenant-precision {
+    background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(6, 182, 212, 0.3);
+}
+
+/* ==========================================================================
+   RESPONSIVITAS MUTLAK & PENGALAMAN PENGGUNA (UX) DI HP & TABLET
+   ========================================================================== */
+
+/* Dukungan Safe Area untuk iPhone & Android modern */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    #mobile-bottom-nav {
+        padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+    }
+}
+
+/* Smooth Touch Scrolling */
+.overflow-x-auto, .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+}
+
+/* Mobile Bottom Navigation Bar Touch Polish */
+.mobile-nav-item {
+    transition: all 0.15s ease-in-out;
+}
+.mobile-nav-item:active {
+    transform: scale(0.92);
+}
+
+/* Responsive Table Container */
+.table-responsive-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 1rem;
+}
+
+/* Optimasi Khusus Layar Ponsel (Mobile Breakpoint <= 768px) */
+@media screen and (max-width: 768px) {
+    /* Mencegah auto-zoom liar saat input diklik di iOS/Android */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+        font-size: 15px !important;
+        min-height: 42px;
+    }
+
+    /* Ukuran Touch Target Nyaman untuk navigasi mobile */
+    #mobile-bottom-nav button,
+    #btn-mobile-menu {
+        min-height: 40px;
+    }
+
+    /* Padding bawah agar konten tidak tertutup bottom bar di HP */
+    main {
+        padding-bottom: 5rem !important;
+    }
+
+    /* Tabel responsif pada layar kecil */
+    table {
+        font-size: 0.8125rem;
+    }
+
+    /* Modal responsif proporsional di HP */
+    .modal-backdrop {
+        padding: 0.75rem !important;
+    }
+    
+    .modal-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 92vh !important;
+        margin: auto !important;
+        border-radius: 1.25rem !important;
+    }
+
+    .modal-content form {
+        padding: 1rem !important;
+    }
+}
+
+/* Layar Ekstra Kecil (HP <= 480px) */
+@media screen and (max-width: 480px) {
+    .modal-backdrop {
+        padding: 0.5rem !important;
+    }
+
+    .modal-content form {
+        padding: 0.875rem !important;
+        gap: 0.75rem !important;
+    }
+
+    /* Teks dan padding disesuaikan agar proporsional */
+    h1, h2 {
+        word-break: break-word;
+    }
+}
+
+/* ==========================================================================
+   LAYOUT SIDEBAR TETAP (FIXED) & MAIN CONTENT INDEPENDENT SCROLL
+   ========================================================================== */
+#app-layout {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+#sidebar {
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+#main-content {
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+
+
+/* ==========================================================================\n   LOGIN MOBILE POLISH — JAYA AGROFARM\n   ========================================================================== */
+#auth-screen {
+    overflow-x: hidden;
+}
+
+.auth-branding-title h1 {
+    line-height: 1.15;
+}
+
+.auth-login-title {
+    line-height: 1.35;
+}
+
+.auth-login-description {
+    line-height: 1.55;
+}
+
+@media screen and (max-width: 480px) {
+    #auth-screen {
+        align-items: flex-start !important;
+        padding: 0.75rem !important;
+        padding-top: max(0.75rem, env(safe-area-inset-top)) !important;
+        padding-bottom: max(0.75rem, env(safe-area-inset-bottom)) !important;
+    }
+
+    #auth-screen > div {
+        border-radius: 1.25rem !important;
+        max-width: 100% !important;
+    }
+
+    .auth-branding {
+        padding: 1.25rem 1rem 1.15rem !important;
+        gap: 0.7rem !important;
+    }
+
+    .auth-branding img {
+        width: 3.75rem !important;
+        height: 3.75rem !important;
+        border-radius: 1rem !important;
+    }
+
+    .auth-branding-title {
+        width: 100%;
+        flex-direction: column !important;
+        gap: 0.55rem !important;
+    }
+
+    .auth-branding-title h1 {
+        max-width: 100%;
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        text-wrap: balance;
+    }
+
+    .auth-premium-badge {
+        font-size: 0.65rem !important;
+        padding: 0.3rem 0.7rem !important;
+    }
+
+    .auth-branding p {
+        max-width: 21rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.72rem !important;
+        line-height: 1.45 !important;
+    }
+
+    #auth-screen .flex.border-b {
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+        padding-top: 0 !important;
+    }
+
+    #auth-screen .flex.border-b button {
+        min-height: 3rem;
+        padding: 0.7rem 0.35rem !important;
+        font-size: 0.7rem !important;
+        white-space: nowrap;
+    }
+
+    .auth-content {
+        padding: 1.25rem 1rem 1.5rem !important;
+        gap: 0 !important;
+    }
+
+    .auth-login-title {
+        font-size: 1rem !important;
+        line-height: 1.35 !important;
+        max-width: 20rem;
+    }
+
+    .auth-login-description {
+        font-size: 0.72rem !important;
+        line-height: 1.55 !important;
+        margin-top: 0.45rem !important;
+    }
+
+    #form-login-buyer {
+        margin-top: 1.1rem;
+    }
+
+    #auth-screen label {
+        font-size: 0.72rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+
+    #auth-screen input {
+        min-height: 46px !important;
+        height: 46px;
+        border-radius: 0.85rem !important;
+    }
+
+    #auth-screen .auth-content .space-y-4 > div {
+        margin-bottom: 0.85rem;
+    }
+
+    #auth-screen #btn-submit-buyer {
+        min-height: 48px;
+        margin-top: 0.2rem;
+        border-radius: 0.85rem !important;
+    }
+
+    #auth-screen .auth-content .text-center {
+        line-height: 1.45;
+    }
+
+    #auth-screen .auth-content .text-center button {
+        display: inline-block;
+        max-width: 100%;
+        line-height: 1.45;
+    }
+
+    #auth-screen > div > div:last-child {
+        padding: 0.85rem 1rem !important;
+        text-align: center;
+        line-height: 1.4;
+    }
+}

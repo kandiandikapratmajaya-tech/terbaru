@@ -1,0 +1,8 @@
+{
+  "name": "Jaya Agrofarm Nusantara",
+  "description": "Aplikasi Manajemen Pertanian Modern dengan Sistem Whitelist Sekali Bayar dan Pengelolaan Siklus Tanam",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ],
+  "permissions": []
+}
